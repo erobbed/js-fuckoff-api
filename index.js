@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function() {
         let urlField = document.getElementById("url")
         let userFields = document.getElementById("userfields")
         for (let i = 0; i < userFields.children.length; ++i){
-            let inputField = userFields.children[i].children[2]
+            let inputField = userFields.children[i].children[1]
             values.push({name: inputField.name, value: inputField.value})
         }
         getFuckOff(urlField.value, values)
@@ -20,8 +20,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
   function getRandomOperation(callback){
     let url = "http://foaas.com/operations"
-    
-    fetch(url, {        
+
+    fetch(url, {
         headers: {
             Accept: "application/json"
         }
@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   let undesiredOperations = ["Version"]
-  
+
   function selectOperation(operations, callback){
     let allowedOperations = operations.filter(operation => undesiredOperations.indexOf(operation.name) == -1)
     let index = Math.floor(Math.random() * allowedOperations.length)
@@ -61,8 +61,8 @@ document.addEventListener("DOMContentLoaded", function() {
         url = url.replace(`:${v.name}`, v.value)
     })
 
-    let finalUrl = `http://foaas.com${url}`    
-    fetch(finalUrl, {   
+    let finalUrl = `http://foaas.com${url}`
+    fetch(finalUrl, {
         headers: {
             Accept: "application/json"
         }
@@ -77,6 +77,5 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   function resetForm(){
-      
-  }
 
+  }
